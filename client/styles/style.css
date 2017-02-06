@@ -1,33 +1,34 @@
 
-html,
-body {
-  height:100%; 
-  width:100%;
-  padding:0;
-  margin:0;
-}
+
+                     html,
+                     body {
+                         height:100%;
+                         width:100%;
+                         padding:0;
+                         margin:0;
+                     }
 
 #map {
-  height:100%; 
-  width: 100%;
+    height:100%;
+    width: 100%;
 }
 
 ng-map {
-  height:100%; 
-  width: 100%; 
+    height:100%;
+    width: 100%;
 }
 
 /*<!-- Make the panel transparent http://stackoverflow.com/questions/24855438/transparent-bootstrap-panel -->*/
 .panel {
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
-  margin-bottom: 0px;
-  width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    margin-bottom: 0px;
+    width: 100%;
 }
 
 .panel-body {
-  padding: 5px 15px;
+    padding: 5px 15px;
 }
 
 .panel-transparent {
@@ -35,120 +36,107 @@ ng-map {
 }
 
 .icon-message {
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
-  margin-bottom: 20px;
-  width: 90%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    margin-bottom: 20px;
+    width: 90%;
 }
 
 .login {
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  padding: 10px 10px 0 10px;
-  width: 100%;
-  text-align: left;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    padding: 10px 10px 0 10px;
+    width: 100%;
+    text-align: left;
 }
 
 .logout {
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  padding: 10px 10px 0 10px;
-  width: 100%;
-  text-align: right;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    padding: 10px 10px 0 10px;
+    width: 100%;
+    text-align: right;
 }
 
 .login input {
-  height: 40px; 
-  padding-left: 10px;
-  margin-right: 5px;
+    height: 40px;
+    padding-left: 10px;
+    margin-right: 5px;
 }
 
 /*http://www.iconarchive.com/show/bubble-circle-2-icons-by-scafer31000/Message-icon.html*/
 button .sendMessage {
-  background: transparent;
-  background-image: url(../images/icon-message.png);
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  margin: auto;
-  height: 100px;
-  width: 100px;
-  border: none;
+    background: transparent;
+    background-image: url(../images/icon-message.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin: auto;
+    height: 100px;
+    width: 100px;
+    border: none;
 }
 
 .chat-window {
-  text-align: left;
-  height: 400px;
-  background-color: #dcdcdc;
+    text-align: left;
+    height: 400px;
+    background-color: #dcdcdc;
 }
 
 .input-field {
-  float:bottom;
+    float:bottom;
 }
 
 .input-field textarea {
-  width: 90%;
+    width: 90%;
 }
 
 .chatCloseButton {
-  position: absolute; 
-  top: 0; 
-  right: 0; 
-  padding: 10px 20px 0 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px 0 0;
 }
 
 .user-label {
-  margin-bottom: 30px;
-  font-size: 20px;
-  color: #fff;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
 .map-wrapper {
-  position: relative;
-  height: calc(100vh - 4em - 64px);
+    position: relative;
+    height: calc(100vh - 4em - 64px);
 }
 
 .myMap {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
-
-
-
-/*body, html {
-    height: 100%;
-    background-repeat: no-repeat;
-background: rgb(185,210,224); /* Old browsers */
-/*background: -moz-radial-gradient(center, ellipse cover,  rgba(185,210,224,1) 0%, rgba(187,214,228,1) 0%, rgba(186,211,225,1) 15%, rgba(186,211,225,1) 38%, rgba(169,199,215,1) 68%, rgba(169,199,215,1) 68%, rgba(169,199,215,1) 82%, rgba(158,191,208,1) 100%); /* FF3.6-15 */
-/*background: -webkit-radial-gradient(center, ellipse cover,  rgba(185,210,224,1) 0%,rgba(187,214,228,1) 0%,rgba(186,211,225,1) 15%,rgba(186,211,225,1) 38%,rgba(169,199,215,1) 68%,rgba(169,199,215,1) 68%,rgba(169,199,215,1) 82%,rgba(158,191,208,1) 100%); /* Chrome10-25,Safari5.1-6 */*/
-/*background: radial-gradient(ellipse at center,  rgba(185,210,224,1) 0%,rgba(187,214,228,1) 0%,rgba(186,211,225,1) 15%,rgba(186,211,225,1) 38%,rgba(169,199,215,1) 68%,rgba(169,199,215,1) 68%,rgba(169,199,215,1) 82%,rgba(158,191,208,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */*/
-/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9d2e0', endColorstr='#9ebfd0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */*/
-
-/*}*/
 .login_box{
     background:#f7f7f7;
     border:3px solid #F4F4F4;
     padding-left: 15px;
     margin-bottom:25px;
-    }
+}
 .input_title{
     color:rgba(164, 164, 164, 0.9);
     padding-left:3px;
-        margin-bottom: 2px;
-    }
+    margin-bottom: 2px;
+}
 
 hr{
     width:100%;
 }
-    
+
 .welcome{
     font-family: "myriad-pro",sans-serif;
     font-style: normal;
@@ -190,7 +178,7 @@ hr{
 .card {
     background-color: #FFFFFF;
     /* just in case there no content*/
-    padding: 250px 0px 30px;
+    padding: 300px 0px 30px;
     margin: 0 auto 25px;
     margin-top: 15%x;
     /* shadows and rounded borders */

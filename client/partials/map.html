@@ -1,6 +1,7 @@
 <div class="logout" ng-controller="registerLogInLogOut">
       <form>
         <div class="form-group">
+          <button class="btn btn-action" type="submit" ng-click="showProfile()" ng-show="loggedIn">Profile</button>
           <button id="btnLogout" class="btn btn-action" type="submit" ng-click="logOut()" ng-show="loggedIn">Logout</button>
           <br>
           <div>{{badLogin}}</div>
