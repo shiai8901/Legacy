@@ -1,0 +1,27 @@
+
+<div class="container"><br><br>
+<div><h2 class='login_title text-center'>Login</h2></div>
+  <div class="card card-container">
+    <div class="login" ng-controller="registerLogInLogOut">
+      <form class="form-signin">
+        <div class="form-group">
+          <span id="reauth-email" class="reauth-email"></span>
+          <p class="input_title">Email</p>
+          <input type="text" id="inputEmail" class="login_box" ng-model="email" placeholder="email" ng-show="!loggedIn" required autofocus>
+          <p class="input_title">Password</p>
+          <input type="password" ng-model="password" placeholder="password" ng-show="!loggedIn" required> 
+
+          <div id="remember" class="checkbox">
+                    <label>
+                        
+                    </label>
+          </div>
+          <button class="btn btn-default" type="submit" ng-click="logIn()" ng-show="!loggedIn">Login</button>
+
+          <div>{{badLogin}}</div>
+          <a href="" ng-click="signUp()">Don't have an account? <strong>Signup</strong> ...</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
