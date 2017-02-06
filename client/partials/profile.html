@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div ng-controller="registerLogInLogOut">
+    <button type="submit" ng-click="changePassword()">Change Password</button>
+</div>
+<div id="sendMessages">
+    <input type="text" ng-model="message">
+    <select ng-model="target">
+        <option ng-repeat="currentUser in currentUsers">{{currentUser.email}}</option>
+    </select>
+    <button type="submit" ng-click="sendMessage()">Send</button>
+</div>
+<div id="privateMessages" ng-controller="registerLogInLogOut">
+    <ul>
+        <li ng-repeat="messageObj in privateMessages">{{messageObj.sender}} : {{messageObj.message}}</li>
+    </ul>
+</div>
+</body>
+</html>

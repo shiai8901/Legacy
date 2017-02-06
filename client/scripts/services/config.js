@@ -15,14 +15,14 @@ angular.module('myApp').config(function($routeProvider, $locationProvider, $http
   });
 
   $routeProvider
-  .when('/send-message', {
-    templateUrl: '../../partials/map.html',
-    controller: 'chatterboxCtrl',
-  })
   .when('/signup', {
             templateUrl: '../../partials/signup.html',
             controller: 'registerLogInLogOut'
   })
+      .when('/profile', {
+        templateUrl: '../../partials/profile.html',
+        controller: 'privateMessages'
+      })
     .when('/map', {
       templateUrl: '../../partials/map.html',
       controller: 'initializeMap'
@@ -33,26 +33,35 @@ angular.module('myApp').config(function($routeProvider, $locationProvider, $http
   })
 
 })
- .run(function($rootScope, $location) {
+ .run(function($rootScope, $location, firebase) {
+
+      if (localStorage.getItem('user')){
+        console.log(localStorage.getItem('user'));
+        $rootScope.loggedIn = true;
+      }
     $rootScope.attemptSignup = false;
-    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      console.log('route changing');
-      
-      var checkLogin = function () {
-        if ($rootScope.loggedIn === true) {
+      window.checkLogin = function () {
+        console.log('check login');
+        console.log($rootScope.loggedIn);
+        if ($rootScope.accessProfile === true) {
+          console.log('accessing profile');
+          $location.path('/profile');
+        }
+        else if ($rootScope.loggedIn === true) {
           console.log("logged in!");
           // no logged user, redirect to /login
-            $location.path("/map");
-          }
-          else if ($rootScope.attemptSignup === true) {
-            console.log('attempt signup');
-            $location.path('/signup');
-          }
-          else {
-              $location.path("/");
-          }
+          $location.path("/map");
         }
+        else if ($rootScope.attemptSignup === true) {
+          console.log('attempt signup');
+          $location.path('/signup');
+        }
+        else {
+          console.log('root');
+          $location.path("/");
+        }
+      }
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      window.checkLogin();
       });
-
-      setTimeout(function(){ checkLogin(); }, 800);
   });

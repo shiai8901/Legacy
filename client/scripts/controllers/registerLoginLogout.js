@@ -17,6 +17,12 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
   $scope.logIn = function() {
     var login = databaseAndAuth.auth.signInWithEmailAndPassword($scope.email, $scope.password);
     login.then(function(user) {
+      $rootScope.userCredentials = {
+        email: user.email
+      }
+      fetchMessages();
+      getUsers();
+      localStorage.setItem('user', user);
       $scope.email = '';
       $scope.password = '';
       $scope.badLogin = '';
@@ -39,6 +45,7 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
     //then sign them out
     logout.then(function(){
       console.log('logged out');
+      localStorage.removeItem('user');
       $rootScope.$broadcast('user:loggedOut', '');
       databaseAndAuth.auth.signOut();
       console.log('user logged out: ', $scope.userId);
@@ -60,9 +67,17 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
   databaseAndAuth.auth.onAuthStateChanged(function(databaseUser) {
     if (databaseUser) {
       //run databse listener every time there is a login/logout/page refresh
+      console.log('calling this function');
+      localStorage.setItem('user', databaseUser);
       runListeners.childChanged();
       runListeners.childAdded();
       runListeners.childRemoved();
+      $rootScope.loggedIn = true;
+      $rootScope.userCredentials = {
+        email: databaseUser.email
+      }
+      fetchMessages();
+      getUsers();
       //broadcast the unique user id so it can watchCurrentLocation controller
       //can update the database with the most recent location
       $rootScope.$broadcast('user:logIn', databaseUser.uid);
@@ -70,14 +85,55 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
       //the user's coordinates
       $scope.userId = databaseUser.uid;
       //show logout button on homepage
-      $rootScope.loggedIn = true;
-      $location.path('/map');
+      //$location.path('/map');
       $scope.$apply();
     } else {
       //hide logout button (user is not logged in)
       $rootScope.loggedIn = false;
       $scope.$apply();
-      //$location.path('/login');
+      //$location.path('/');
     }
   });
+  function escapeEmailAddress(email) {
+    if (!email) return false
+
+    // Replace '.' (not allowed in a Firebase key) with ',' (not allowed in an email address)
+    email = email.toLowerCase();
+    email = email.replace(/\./g, ',');
+    return email;
+  }
+$scope.changePassword = function () {
+  var user = firebase.auth().currentUser;
+  console.log(user);
+  var newPassword = 'reactorhack';
+
+  user.updatePassword(newPassword).then(function() {
+    console.log('password changed!')
+  }, function(error) {
+    // An error happened.
+    console.log('error');
+  });
+}
+//helper- retrieve users to send private messages
+var getUsers = function () {
+  var userRef =  firebase.database().ref('users');
+  userRef.on('value', function(snapshot, prevChildKey){
+    $rootScope.currentUsers = snapshot.val();
+    $scope.$apply();
+  })
+}
+
+//helper- retrieve private messages from db
+var fetchMessages = function () {
+  var userRef = firebase.database().ref('privateMessages/' + escapeEmailAddress($rootScope.userCredentials.email));
+  userRef.on('value', function (snapshot, prevChildKey) {
+    $scope.privateMessages = snapshot.val();
+    $scope.$apply();
+  });
+}
+
+  $scope.showProfile = function () {
+    $rootScope.accessProfile = true;
+    $location.path('/profile');
+  }
 });
