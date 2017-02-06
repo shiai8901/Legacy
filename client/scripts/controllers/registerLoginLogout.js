@@ -105,7 +105,7 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
 $scope.changePassword = function () {
   var user = firebase.auth().currentUser;
   console.log(user);
-  var newPassword = 'reactorhack';
+  var newPassword = $scope.newPassword;
 
   user.updatePassword(newPassword).then(function() {
     console.log('password changed!')
