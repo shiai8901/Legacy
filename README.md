@@ -1,1 +1,1 @@
-# PalFinder-Aprajita
+# palfinder
