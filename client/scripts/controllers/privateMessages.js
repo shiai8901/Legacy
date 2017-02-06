@@ -21,4 +21,8 @@ angular.module('myApp').controller('privateMessages', function($rootScope, $scop
         });
         console.log('sent message!');
     }
+    $scope.goHome = function () {
+        $rootScope.accessProfile = false;
+        $location.path('/map');
+    }
 });
